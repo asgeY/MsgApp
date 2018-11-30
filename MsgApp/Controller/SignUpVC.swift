@@ -69,7 +69,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
             
             return
         }
-        if let imgData = UIImage(cgImage: 0.2 as! CGImage){
+        if let imgData = UIImageJPEGRepresentation(img: 0.2){
             let imgUid = NSUUID().uuidString
             let metaData = StorageMetadata()
             metaData.contentType = "image/Jpeg"

@@ -26,8 +26,8 @@ class MessageVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UIT
     var recipient: String!
     
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         // Initialization code
         
         tableView?.delegate = self
@@ -47,6 +47,7 @@ class MessageVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UIT
         view.addGestureReconizer(tap)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)){
+            
             self.moveToBottom()
         }
         

@@ -15,7 +15,7 @@ class Message {
     private var _message: String!
     private var _sender: String!
     private var _messageKey: String!
-    private var _messageRef: DatabaseReference
+    private var _messageRef: DatabaseReference!
     
     var currentUser = KeychainWrapper.standard.string(forKey: "uid")
     var message: String{

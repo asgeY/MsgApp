@@ -13,18 +13,15 @@ import SwiftKeychainWrapper
 
 class ChatVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
-    public init() {
-        
-    }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     
     @IBOutlet weak var tableView : UITableView!
     
     var messageDetail = [MessageDetail]()
-    var detail: MessageDetail
+    var detail: MessageDetail!
     var currentUser = KeychainWrapper.standard.string(forKey:"uid")
     var recipient: String!
     var messageId : String!
@@ -42,7 +39,7 @@ class ChatVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 for data in snapshot {
                     if let messageDict = data.value as? Dictionary<String,AnyObject> {
                         let key = data.key
-                        let info = messageDetail(messageKey:key ,messaageData: messageDict)
+                        let info = MessageDetail(messageKey:key ,messageData: messageDict)
                         
                         self .messageDetail.append(info)
                     }
@@ -68,7 +65,9 @@ class ChatVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell") as? MessageDetailCell{
             cell.configerCell(messageDetail: messageDet)
+            
             return cell
+            
         }else{
             return MessageDetailCell()
         }
