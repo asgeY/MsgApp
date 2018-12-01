@@ -60,33 +60,42 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
     func uploadImg (){
         if userNameField.text == nil {
             SignUpBtn.isEnabled = false
+            
         }else {
             userName = userNameField.text
             SignUpBtn.isEnabled = true
         }
+        
         guard let img = userImagePicker.image, imageselected == true else {
             print("Image needs to be selected")
             
             return
         }
-        if let imgData = UIImageJPEGRepresentation(img: 0.2){
+        
+        if let imgData = img.jpegData(compressionQuality: 0.2) {
+            
             let imgUid = NSUUID().uuidString
-            let metaData = StorageMetadata()
-            metaData.contentType = "image/Jpeg"
-            Storage.storage().reference().child(imgUid).putData(imgData, metadata:metaData){(metaData,error
+            let storageRef = StorageMetadata()
+            storageRef.contentType = "image/Jpeg"
+            Storage.storage().reference().child(imgUid).putData(imgData, metadata: nil, completion: {(metaData,error
                 ) in
+                
                 if error != nil {
                 print("Did not upload Image!")
+                    
             }else {
                    print("Uploaded")
-                let downloadURL = metaData.downloadURL()?.absoulteString
+                    
+                    let downloadURL = storageRef.downloadURL()? .absoulteString
+                    
                     if let url = downloadURL {
-                        self.setuser(img:url)
+                        self.setUser(img:url)
                     }
                 }
-            }
+            })
         }
     }
+    
     @IBAction func createAccount (_sender: AnyObject){
         Auth.auth().createUser(withEmail: emailField,password: passwordField,completion: {(user,error) in
             if error != nil {
@@ -101,11 +110,13 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate,UINavigationCo
             self.uploadImg()
         })
     }
+    
     @IBAction func selectedImgPicker(_sender: AnyObject){
         
             present(imagePicker,animated: true,completion: nil)
         
         }
+    
     @IBAction func cancel(_sender: AnyObject){
         
             dismiss(animated: true, completion: nil)

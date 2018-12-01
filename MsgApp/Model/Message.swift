@@ -21,16 +21,20 @@ class Message {
     var message: String{
         return _message
     }
+    
     var sender: String{
         return _sender
     }
+    
     var messageKey: String{
         return _messageKey
     }
+    
     init(message: String, sender: String) {
         _message = message
         _sender = sender
     }
+    
     init(messageKey: String , postData: Dictionary<String, AnyObject>) {
         _messageKey = messageKey
         

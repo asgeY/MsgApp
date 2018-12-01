@@ -63,7 +63,7 @@ class ChatVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         let messageDet = messageDetail[indexPath.row]
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell") as? MessageDetailCell{
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell") as? MessageDetailCell{
             cell.configerCell(messageDetail: messageDet)
             
             return cell

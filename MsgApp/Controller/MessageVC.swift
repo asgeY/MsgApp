@@ -44,7 +44,7 @@ class MessageVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UIT
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         
-        view.addGestureReconizer(tap)
+        view.addGestureRecognizer(tap)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)){
             
@@ -161,5 +161,4 @@ class MessageVC: UIViewController,UITableViewDelegate,UITableViewDataSource, UIT
         dismiss(animated: true, completion: nil)
     }
 }
-
 

@@ -42,7 +42,7 @@ class SearchCell: UITableViewCell {
             
             if error != nil {
                 
-                print(" we couldnt upload the img")
+                print(" We couldnt upload the Img")
                 
             } else {
                 

@@ -125,15 +125,15 @@
                                     <constraint firstAttribute="trailing" secondItem="ahi-OH-9e7" secondAttribute="trailing" constant="16" id="zak-b5-HVy"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vFq-wZ-Wwu">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vFq-wZ-Wwu">
                                 <rect key="frame" x="0.0" y="67" width="375" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableViewCell" rowHeight="80" id="yaq-Ib-EEy">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="80" id="yaq-Ib-EEy" customClass="MessageDetailCell" customModule="MsgApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yaq-Ib-EEy" id="xy2-sj-uOK">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wYe-hg-m6z">
@@ -174,6 +174,11 @@
                                                 <constraint firstItem="seb-a4-rhC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xy2-sj-uOK" secondAttribute="leading" constant="20" symbolic="YES" id="s50-VZ-0sk"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="chatPreview" destination="wYe-hg-m6z" id="a0Y-kP-upH"/>
+                                            <outlet property="recipientImg" destination="Yk5-5D-VG1" id="sFu-Hn-p7m"/>
+                                            <outlet property="recipientName" destination="seb-a4-rhC" id="6gg-V9-7hz"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -223,7 +228,6 @@
                                         <rect key="frame" x="4" y="37" width="34" height="30"/>
                                         <state key="normal" title="Back"/>
                                         <connections>
-                                            <action selector="goBack:" destination="2ib-pY-8yJ" eventType="touchUpInside" id="xkX-O9-MFi"/>
                                             <action selector="signOut:" destination="dLB-gL-A5t" eventType="touchUpInside" id="7W7-lp-872"/>
                                         </connections>
                                     </button>
@@ -250,7 +254,7 @@
                                 <rect key="frame" x="0.0" y="123" width="375" height="544"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="UserCell" id="4Zd-uh-y8s">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="UserCell" id="4Zd-uh-y8s" customClass="SearchCell" customModule="MsgApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Zd-uh-y8s" id="DOj-FU-acC">
@@ -279,6 +283,10 @@
                                                 <constraint firstItem="S4O-2W-fTv" firstAttribute="centerY" secondItem="DOj-FU-acC" secondAttribute="centerY" id="o2T-eG-aaV"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLbl" destination="flz-En-Du8" id="lQT-sJ-h2v"/>
+                                            <outlet property="userImage" destination="S4O-2W-fTv" id="pjJ-sA-b1V"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -409,6 +417,7 @@
                                         <rect key="frame" x="4" y="37" width="34" height="30"/>
                                         <state key="normal" title="Back"/>
                                         <connections>
+                                            <action selector="backPressed:" destination="7vA-0L-rS5" eventType="touchUpInside" id="3Rc-8I-Y8k"/>
                                             <action selector="signOut:" destination="dLB-gL-A5t" eventType="touchUpInside" id="sbY-oJ-MOJ"/>
                                         </connections>
                                     </button>
@@ -445,6 +454,9 @@
                                         <state key="normal" title="Send">
                                             <color key="titleColor" red="0.58081901069999997" green="0.088427625600000004" blue="0.31863921880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="sendPressed:" destination="7vA-0L-rS5" eventType="touchUpInside" id="AB4-ff-Zqr"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -458,15 +470,15 @@
                                     <constraint firstAttribute="bottom" secondItem="lmU-jj-vTU" secondAttribute="bottom" constant="5" id="zJL-2S-uma"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JRN-1x-qjM">
-                                <rect key="frame" x="0.0" y="87" width="375" height="580"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JRN-1x-qjM">
+                                <rect key="frame" x="0.0" y="87" width="375" height="529"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="eMw-5r-8NT" customClass="MessagesCell" customModule="MsgApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Message" id="eMw-5r-8NT" customClass="MessagesCell" customModule="MsgApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eMw-5r-8NT" id="t9b-vd-vjV">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CcH-9e-pGj">
@@ -530,7 +542,7 @@
                         <constraints>
                             <constraint firstItem="JRN-1x-qjM" firstAttribute="leading" secondItem="X7d-qd-tne" secondAttribute="leading" id="39X-eu-crj"/>
                             <constraint firstItem="vG2-Eb-0uy" firstAttribute="bottom" secondItem="X7d-qd-tne" secondAttribute="bottom" id="7Yo-zO-vjx"/>
-                            <constraint firstItem="X7d-qd-tne" firstAttribute="bottom" secondItem="JRN-1x-qjM" secondAttribute="bottom" id="PDC-vQ-QSD"/>
+                            <constraint firstItem="X7d-qd-tne" firstAttribute="bottom" secondItem="JRN-1x-qjM" secondAttribute="bottom" constant="51" id="PDC-vQ-QSD"/>
                             <constraint firstItem="vG2-Eb-0uy" firstAttribute="leading" secondItem="X7d-qd-tne" secondAttribute="leading" id="XeT-kW-hDL"/>
                             <constraint firstItem="gc8-1p-0Pw" firstAttribute="top" secondItem="X7d-qd-tne" secondAttribute="top" id="azu-AH-Ttl"/>
                             <constraint firstAttribute="trailing" secondItem="gc8-1p-0Pw" secondAttribute="trailing" id="ezZ-v7-RYM"/>
@@ -540,7 +552,15 @@
                             <constraint firstItem="JRN-1x-qjM" firstAttribute="top" secondItem="gc8-1p-0Pw" secondAttribute="bottom" id="vMn-Hc-XHf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="X7d-qd-tne"/>
+                        <connections>
+                            <outlet property="messageField" destination="8WU-6O-snA" id="QUs-Jk-dC1"/>
+                            <outlet property="sendButton" destination="lmU-jj-vTU" id="ZWs-ao-czi"/>
+                            <outlet property="tableView" destination="JRN-1x-qjM" id="jTR-eo-eKl"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <segue destination="2ib-pY-8yJ" kind="show" identifier="toMessage" id="zg7-Kp-qgL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YVT-e0-3eU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -548,6 +568,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="zg7-Kp-qgL"/>
         <segue reference="kx2-J9-j0R"/>
     </inferredMetricsTieBreakers>
 </document>
